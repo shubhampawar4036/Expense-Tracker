@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { Header } from './components/Header';
+import { Balance } from './components/Balance';
+import { IncomeExpenses } from './components/IncomeExpense';
+import { TransactionList } from './components/TransactionList';
+import { AddTransaction } from './components/AddTransaction'; // Fixed import name
+import { GlobalProvider } from './context/GlobalState';
+
+import './App.css';
+import moneyImage from './assets/money.jpg'; // Adjust the path as needed
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <GlobalProvider>
+        <div className="relative overflow-hidden w-full h-screen bg-gray-900 text-gray-100">
+          <div
+            className="absolute inset-0 w-full h-full bg-cover bg-center z-[-1]"
+            style={{ backgroundImage: `url(${moneyImage})` }}
+          >
+          </div>
+          <div className="flex items-center justify-center w-full h-full">
+            <div className="w-full max-w-md p-6 bg-gray-800 rounded-lg shadow-lg">
+              <Header />
+              <div className="mt-4">
+                <Balance />
+                <IncomeExpenses />
+                <TransactionList />
+                <AddTransaction />
+              </div>
+            </div>
+          </div>
+        </div>
+      </GlobalProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
