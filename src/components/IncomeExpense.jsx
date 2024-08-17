@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
@@ -30,7 +31,7 @@ export const IncomeExpenses = () => {
 
   return (
     <div className="flex justify-between bg-gradient-to-r from-gray-800 to-gray-900 p-5 mb-5 rounded-lg shadow-lg animate-fadeIn transform transition-transform duration-500 ease-in-out hover:scale-105">
-      <div className="w-1/2 text-center border-r border-gray-700">
+      <div className="w-1/3 text-center border-r border-gray-700">
         <h4 className="text-md uppercase text-gray-400">Income</h4>
         <p className="text-2xl font-bold text-green-400 mt-2">{moneyFormatter(income)}</p>
       </div>
